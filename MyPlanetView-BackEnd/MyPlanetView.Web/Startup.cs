@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyPlanetView.Core.Models;
 using MyPlanetView.Data;
+using System;
 
 namespace MyPlanetView.Web
 {
@@ -24,6 +27,11 @@ namespace MyPlanetView.Web
 
             services.AddDbContext<DataContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services
+                .AddIdentity<User, IdentityRole<Guid>>()
+                .AddEntityFrameworkStores<DataContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
