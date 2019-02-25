@@ -3,14 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { NavbarComponent } from './navbar/navbar.component';
+import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot() ,
+    LeafletModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
